@@ -29,26 +29,55 @@ describe 'rubyinstaller::default' do
     end
 
     before do
-      @url = 'http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller'
+      @base_url = 'http://dl.bintray.com/oneclick/rubyinstaller'
+      @dk_base_url = "#{@base_url}/DevKit-mingw64"
+      @cache_path = Chef::Config['file_cache_path']
     end
 
-    it 'installs the latest version of RubyInstaller' do
-      expect(chef_run).to install_package('rubyinstaller')
-        .with(source: "#{@url}-2.3.0-x64.exe")
+    context 'with 64-bit architecture' do
+      let(:dk_version) { '64-4.7.2-20130224-1432' }
+      let(:dk_pkg) { "DevKit-mingw64-#{dk_version}-sfx.exe" }
+
+      it 'installs the latest version of RubyInstaller' do
+        expect(chef_run).to install_package('rubyinstaller')
+          .with(source: "#{@base_url}/rubyinstaller-2.3.0-x64.exe")
+      end
+
+      it 'installs a specific version of RubyInstaller' do
+        chef_run.node.set['rubyinstaller']['version'] = '2.2.2'
+        chef_run.converge(described_recipe)
+        expect(chef_run).to install_package('rubyinstaller')
+          .with(source: "#{@base_url}/rubyinstaller-2.2.2-x64.exe")
+      end
+
+      it 'downloads the Ruby DevKit' do
+        expect(chef_run).to create_remote_file("#{@cache_path}/#{dk_pkg}")
+          .with(source: "#{@dk_base_url}-64-4.7.2-20130224-1432-sfx.exe")
+      end
+
+      it 'extracts the DevKit' do
+        expect(chef_run).to run_powershell_script('extract_devkit')
+          .with(code: "#{@cache_path}/#{dk_pkg} -o'C:/DevKit-x64' -y")
+      end
     end
 
-    it 'installs a specific version of RubyInstaller' do
-      chef_run.node.set['rubyinstaller']['version'] = '2.2.2'
-      chef_run.converge(described_recipe)
-      expect(chef_run).to install_package('rubyinstaller')
-        .with(source: "#{@url}-2.2.2-x64.exe")
-    end
+    context 'with 32-bit architecture' do
+      before do
+        chef_run.node.automatic['kernel']['machine'] = 'i686'
+        chef_run.converge(described_recipe)
+      end
 
-    it 'installs 32-bit version if matches arch' do
-      chef_run.node.automatic['kernel']['machine'] = 'i686'
-      chef_run.converge(described_recipe)
-      expect(chef_run).to install_package('rubyinstaller')
-        .with(source: "#{@url}-2.3.0.exe")
+      it 'installs 32-bit version of RubyInstaller' do
+        expect(chef_run).to install_package('rubyinstaller')
+          .with(source: "#{@base_url}/rubyinstaller-2.3.0.exe")
+      end
+
+      it 'downloads the 32-bit version of DevKit' do
+        dk_version = '32-4.7.2-20130224-1151'
+        dk_pkg = "DevKit-mingw64-#{dk_version}-sfx.exe"
+        expect(chef_run).to create_remote_file("#{@cache_path}/#{dk_pkg}")
+          .with(source: "#{@dk_base_url}-#{dk_version}-sfx.exe")
+      end
     end
   end
 end

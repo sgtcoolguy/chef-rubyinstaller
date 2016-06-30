@@ -22,3 +22,15 @@ control 'rubyinstaller-2' do
     its(:stdout) { should match(/ruby/) }
   end
 end
+
+control 'rubyinstaller-3' do
+  title 'RubyInstaller: DevKit is installed'
+  desc '
+    So that gems with C extensions can be built, the DevKit needs to be
+    installed.
+  '
+
+  describe file('C:\\DevKit-x64') do
+    it { should be_directory }
+  end
+end

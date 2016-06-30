@@ -1,5 +1,5 @@
 {
-  "revision_id": "afedb5e508e5fa23924a3f848cdf8236acd8bb8546266cee82904afc695cdda0",
+  "revision_id": "10bf8df3cc61171fbe166d19e8564912cfcbbbe6b28cda3bb2c3e554d070144b",
   "name": "rubyinstaller",
   "run_list": [
     "recipe[rubyinstaller::default]"
@@ -7,14 +7,14 @@
   "cookbook_locks": {
     "rubyinstaller": {
       "version": "0.1.0",
-      "identifier": "45a4c1eb6ba4479ad5b666ca84941b950b60e70b",
-      "dotted_decimal_identifier": "19602926178378823.43582125798753428.30326954977035",
+      "identifier": "12e9447abc51e90dd2aff7eb6128c035382c16f4",
+      "dotted_decimal_identifier": "5323029907001833.3890827917746472.211334808213236",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": null,
-        "revision": "a4e5e3ffede794cf012fe897696606a3719ec12c",
+        "revision": "ccaf13d67dcca8f2c7788d93b191e044042c2556",
         "working_tree_clean": false,
         "published": false,
         "synchronized_remote_branches": [
@@ -85,16 +85,6 @@
       ]
     ],
     "dependencies": {
-      "rubyinstaller (0.1.0)": [
-        [
-          "chef-sugar",
-          "~> 3.3.0"
-        ],
-        [
-          "windows",
-          "~> 1.44.1"
-        ]
-      ],
       "chef-sugar (3.3.0)": [
 
       ],
@@ -106,6 +96,16 @@
       ],
       "chef_handler (1.4.0)": [
 
+      ],
+      "rubyinstaller (0.1.0)": [
+        [
+          "chef-sugar",
+          "~> 3.3.0"
+        ],
+        [
+          "windows",
+          "~> 1.44.1"
+        ]
       ]
     }
   }

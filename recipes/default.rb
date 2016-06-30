@@ -19,20 +19,35 @@
 include_recipe 'chef-sugar::default'
 
 if windows?
-  base_url = 'http://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller'
-  version  = node['rubyinstaller']['version']
+  base_url    = 'http://dl.bintray.com/oneclick/rubyinstaller'
+  ri_version  = node['rubyinstaller']['version']
+  ri_base_url = "#{base_url}/rubyinstaller-#{ri_version}"
+  chef_cache  = Chef::Config['file_cache_path']
 
-  source_url = if node['kernel']['machine'] == 'x86_64'
-    "#{base_url}-#{version}-x64.exe"
+  if _64_bit?
+    ri_source_url = "#{ri_base_url}-x64.exe"
+    dk_pkg_name   = 'DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe'
+    dk_path       = 'C:/DevKit-x64'
   else
-    "#{base_url}-#{version}.exe"
+    ri_source_url = "#{ri_base_url}.exe"
+    dk_pkg_name   = 'DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe'
+    dk_path       = 'C:/DevKit'
   end
 
   package 'rubyinstaller' do
-    source source_url
+    source ri_source_url
   end
 
   windows_path 'C:\Ruby23-x64\bin' do
     action :add
+  end
+
+  remote_file "#{chef_cache}/#{dk_pkg_name}" do
+    source "#{base_url}/#{dk_pkg_name}"
+  end
+
+  powershell_script 'extract_devkit' do
+    code "#{chef_cache}/#{dk_pkg_name} -o'#{dk_path}' -y"
+    not_if { ::File.exist? dk_path }
   end
 end
