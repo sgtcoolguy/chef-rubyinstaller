@@ -43,7 +43,8 @@ separate change you make.
 This cookbook uses [ChefSpec][chefspec] for unit tests. I also use [Food
 Critic][foodcritic] and [RuboCop][rubocop] to check for style issues.
 When contributing it would be very helpful if you could run these via
-`bundle exec spec` and `bundle exec style`.
+`bundle exec rake spec` and `bundle exec rake rubocop`. You can also
+just run all of them with `bundle exec rake`.
 
 Lastly, there are [Inspec][inspec] integration tests for use
 with [Test Kitchen][testkitchen]. At the very least the installation
