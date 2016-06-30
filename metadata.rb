@@ -4,6 +4,8 @@ maintainer_email 'emachnic@gmail.com'
 license 'apachev2'
 description 'Installs/Configures RubyInstaller'
 long_description 'Installs/Configures RubyInstaller'
+issues_url 'https://github.com/emachnic/chef-rubyinstaller/issues'
+source_url 'https://github.com/emachnic/chef-rubyinstaller'
 version '0.1.0'
 
 supports 'windows'
