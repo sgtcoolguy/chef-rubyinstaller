@@ -34,3 +34,20 @@ control 'rubyinstaller-3' do
     it { should be_directory }
   end
 end
+
+control 'rubyinstaller-4' do
+  title 'RubyInstaller: Ruby is linked to DevKit'
+  desc '
+    The Ruby installation has to be linked to the DevKit. Otherwise
+    gems like json and nokogiri cannot install
+  '
+
+  describe file('C:\\DevKit-x64\config.yml') do
+    its(:content) { should match(%r{- C:\/Ruby23-x64}) }
+  end
+
+  describe command('gem install json --platform=ruby') do
+    its(:stdout) { should match(/Building native extensions/) }
+    its(:stdout) { should match(/Successfully installed json/) }
+  end
+end

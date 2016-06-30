@@ -16,7 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 require 'spec_helper'
 
 describe 'rubyinstaller::default' do
@@ -58,6 +57,17 @@ describe 'rubyinstaller::default' do
       it 'extracts the DevKit' do
         expect(chef_run).to run_powershell_script('extract_devkit')
           .with(code: "#{@cache_path}/#{dk_pkg} -o'C:/DevKit-x64' -y")
+      end
+
+      it 'writes the DevKit configuration file' do
+        expect(chef_run).to render_file('C:/DevKit-x64/config.yml')
+          .with_content('- C:/Ruby23-x64')
+      end
+
+      it 'links Ruby to the DevKit' do
+        expect(chef_run).to run_powershell_script('link_ruby_to_devkit')
+          .with(cwd: 'C:/DevKit-x64',
+                code: 'ruby dk.rb install')
       end
     end
 

@@ -38,7 +38,7 @@ if windows?
     source ri_source_url
   end
 
-  windows_path 'C:\Ruby23-x64\bin' do
+  windows_path "#{node['rubyinstaller']['path']}/bin" do
     action :add
   end
 
@@ -49,5 +49,14 @@ if windows?
   powershell_script 'extract_devkit' do
     code "#{chef_cache}/#{dk_pkg_name} -o'#{dk_path}' -y"
     not_if { ::File.exist? dk_path }
+  end
+
+  template "#{dk_path}/config.yml" do
+    source 'config.yml.erb'
+  end
+
+  powershell_script 'link_ruby_to_devkit' do
+    cwd dk_path
+    code 'ruby dk.rb install'
   end
 end
