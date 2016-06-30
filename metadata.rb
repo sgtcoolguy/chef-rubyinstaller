@@ -9,3 +9,4 @@ version '0.1.0'
 supports 'windows'
 
 depends 'chef-sugar', '~> 3.3.0'
+depends 'windows',    '~> 1.44.1'

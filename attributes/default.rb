@@ -1,1 +1,1 @@
-default['rubyinstaller']['version'] = '2.2.3'
+default['rubyinstaller']['version'] = '2.3.0'

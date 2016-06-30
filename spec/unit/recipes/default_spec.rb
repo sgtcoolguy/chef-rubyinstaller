@@ -34,7 +34,7 @@ describe 'rubyinstaller::default' do
 
     it 'installs the latest version of RubyInstaller' do
       expect(chef_run).to install_package('rubyinstaller')
-        .with(source: "#{@url}-2.2.3-x64.exe")
+        .with(source: "#{@url}-2.3.0-x64.exe")
     end
 
     it 'installs a specific version of RubyInstaller' do
@@ -48,7 +48,7 @@ describe 'rubyinstaller::default' do
       chef_run.node.automatic['kernel']['machine'] = 'i686'
       chef_run.converge(described_recipe)
       expect(chef_run).to install_package('rubyinstaller')
-        .with(source: "#{@url}-2.2.3.exe")
+        .with(source: "#{@url}-2.3.0.exe")
     end
   end
 end

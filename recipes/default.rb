@@ -31,4 +31,8 @@ if windows?
   package 'rubyinstaller' do
     source source_url
   end
+
+  windows_path 'C:\Ruby23-x64\bin' do
+    action :add
+  end
 end
