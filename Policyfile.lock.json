@@ -1,0 +1,69 @@
+{
+  "revision_id": "469c4ca13cdd57a088d924e0be1c6ef75efecdddf4b5cd148bbbaa173c7d5029",
+  "name": "rubyinstaller",
+  "run_list": [
+    "recipe[rubyinstaller::default]"
+  ],
+  "cookbook_locks": {
+    "rubyinstaller": {
+      "version": "0.1.0",
+      "identifier": "7bdd6ebd5b0f0a1f2e325d5d2e2dd016326fdbf7",
+      "dotted_decimal_identifier": "34864889828413194.8776518127660589.228793754049527",
+      "source": ".",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": null,
+        "working_tree_clean": true,
+        "published": false,
+        "synchronized_remote_branches": [
+
+        ]
+      },
+      "source_options": {
+        "path": "."
+      }
+    },
+    "chef-sugar": {
+      "version": "3.3.0",
+      "identifier": "edbd3c511b641f0f53842a21964a8a422d649799",
+      "dotted_decimal_identifier": "66917636236862495.4313951758292554.152016834041753",
+      "cache_key": "chef-sugar-3.3.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-sugar/versions/3.3.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chef-sugar/versions/3.3.0/download",
+        "version": "3.3.0"
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "rubyinstaller",
+        ">= 0.0.0"
+      ],
+      [
+        "chef-sugar",
+        "= 3.3.0"
+      ]
+    ],
+    "dependencies": {
+      "chef-sugar (3.3.0)": [
+
+      ],
+      "rubyinstaller (0.1.0)": [
+        [
+          "chef-sugar",
+          "~> 3.3.0"
+        ]
+      ]
+    }
+  }
+}
