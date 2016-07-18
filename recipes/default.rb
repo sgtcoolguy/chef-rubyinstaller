@@ -36,10 +36,19 @@ if windows?
 
   package 'rubyinstaller' do
     source ri_source_url
+    not_if { ::File.exist? node['rubyinstaller']['path'] }
   end
 
   windows_path "#{node['rubyinstaller']['path']}/bin" do
     action :add
+  end
+
+  remote_file "#{node['rubyinstaller']['path']}/cacert.pem" do
+    source 'http://curl.haxx.se/ca/cacert.pem'
+  end
+
+  env 'SSL_CERT_FILE' do
+    value "#{node['rubyinstaller']['path']}/cacert.pem"
   end
 
   remote_file "#{chef_cache}/#{dk_pkg_name}" do
