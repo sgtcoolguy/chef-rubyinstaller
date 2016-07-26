@@ -6,7 +6,7 @@ description 'Installs/Configures RubyInstaller'
 long_description 'Installs/Configures RubyInstaller'
 issues_url 'https://github.com/emachnic/chef-rubyinstaller/issues'
 source_url 'https://github.com/emachnic/chef-rubyinstaller'
-version '0.1.2'
+version '0.1.3'
 
 supports 'windows'
 
