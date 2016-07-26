@@ -43,12 +43,8 @@ if windows?
     action :add
   end
 
-  remote_file "#{node['rubyinstaller']['path']}/cacert.pem" do
+  remote_file "#{node['rubyinstaller']['path']}/lib/ruby/#{ri_version}/rubygems/ssl_certs/AddTrustExternalCARoot-2048" do
     source 'http://curl.haxx.se/ca/cacert.pem'
-  end
-
-  env 'SSL_CERT_FILE' do
-    value "#{node['rubyinstaller']['path']}/cacert.pem"
   end
 
   remote_file "#{chef_cache}/#{dk_pkg_name}" do

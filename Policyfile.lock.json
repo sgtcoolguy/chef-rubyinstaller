@@ -1,20 +1,20 @@
 {
-  "revision_id": "3b7930bc66282768a230ee1aa213cf911d5fd6277b616e7c1a82e665b3c5076e",
+  "revision_id": "135074907635027e47e89b648e880c1277aae473436bf02736076537366dea5f",
   "name": "rubyinstaller",
   "run_list": [
     "recipe[test::default]"
   ],
   "cookbook_locks": {
     "rubyinstaller": {
-      "version": "0.1.1",
-      "identifier": "79ddf40b634b7bd072ad5c5edd78d0fb1d609a34",
-      "dotted_decimal_identifier": "34302512414804859.58672884060446072.229776948238900",
+      "version": "0.1.2",
+      "identifier": "1f65959987b95ce0f2f3861346063e45b96ade07",
+      "dotted_decimal_identifier": "8837417478371676.63317522523571718.68469184454151",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:emachnic/chef-rubyinstaller.git",
-        "revision": "8604bfc2bd15e59587c43cf77736740f6b31b3b2",
+        "revision": "9dfb363745809aa9b284041d1694d20e6b398bf8",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -34,7 +34,7 @@
       "scm_info": {
         "scm": "git",
         "remote": "git@github.com:emachnic/chef-rubyinstaller.git",
-        "revision": "8604bfc2bd15e59587c43cf77736740f6b31b3b2",
+        "revision": "9dfb363745809aa9b284041d1694d20e6b398bf8",
         "working_tree_clean": false,
         "published": true,
         "synchronized_remote_branches": [
@@ -115,7 +115,7 @@
           ">= 0.0.0"
         ]
       ],
-      "rubyinstaller (0.1.1)": [
+      "rubyinstaller (0.1.2)": [
         [
           "chef-sugar",
           "~> 3.3.0"

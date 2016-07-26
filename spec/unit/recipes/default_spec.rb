@@ -49,6 +49,10 @@ describe 'rubyinstaller::default' do
           .with(source: "#{@base_url}/rubyinstaller-2.2.2-x64.exe")
       end
 
+      it 'downloads the latest CA certificate' do
+        expect(chef_run).to create_remote_file("C:/Ruby23-x64/lib/ruby/2.3.0/rubygems/ssl_certs/AddTrustExternalCARoot-2048")
+      end
+
       it 'downloads the Ruby DevKit' do
         expect(chef_run).to create_remote_file("#{@cache_path}/#{dk_pkg}")
           .with(source: "#{@dk_base_url}-64-4.7.2-20130224-1432-sfx.exe")
