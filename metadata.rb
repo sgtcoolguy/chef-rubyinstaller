@@ -10,5 +10,5 @@ version '0.1.4'
 
 supports 'windows'
 
-depends 'chef-sugar', '~> 3.4'
-depends 'windows',    '~> 2.1'
+depends 'chef-sugar', '>= 3.4'
+depends 'windows',    '>= 2.1'
