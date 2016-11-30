@@ -4,6 +4,10 @@ This cookbook installs [RubyInstaller](http://rubyinstaller.org/) and the
 [DevKit](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit) on
 Windows machines
 
+## CI
+
+![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/emachnic/chef-rubyinstaller)
+
 ## Requirements
 
 ### Platform
