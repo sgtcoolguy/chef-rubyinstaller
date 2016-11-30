@@ -28,10 +28,9 @@ build_script:
   - ps: c:\opscode\chefdk\bin\chef.bat shell-init powershell | iex; cmd /c c:\opscode\chefdk\bin\chef.bat --version
 
 test_script:
-  - c:\opscode\chefdk\bin\chef.bat exec bundle
-  - c:\opscode\chefdk\bin\chef.bat exec bundle exec cookstyle
+  - c:\opscode\chefdk\bin\chef.bat exec cookstyle
   - c:\opscode\chefdk\bin\chef.bat exec foodcritic .
-  - c:\opscode\chefdk\bin\chef.bat exec bundle exec rake
-  - c:\opscode\chefdk\bin\chef.bat exec bundle exec kitchen verify
+  - c:\opscode\chefdk\bin\chef.bat exec rake
+  - c:\opscode\chefdk\bin\chef.bat exec kitchen verify
 
 deploy: off
