@@ -6,7 +6,7 @@ Windows machines
 
 ## CI
 
-![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/emachnic/chef-rubyinstaller?svg=true&retina=true)
+![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/emachnic/chef-rubyinstaller?retina=true)
 
 ## Requirements
 
