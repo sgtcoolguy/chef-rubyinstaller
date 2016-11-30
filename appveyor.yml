@@ -30,7 +30,7 @@ build_script:
 test_script:
   - c:\opscode\chefdk\bin\chef.bat exec bundle
   - c:\opscode\chefdk\bin\chef.bat exec bundle exec cookstyle
-  - c:\opscode\chefdk\bin\chef.bat exec bundle exec foodcritic
+  - c:\opscode\chefdk\bin\chef.bat exec foodcritic
   - c:\opscode\chefdk\bin\chef.bat exec bundle exec rake
   - c:\opscode\chefdk\bin\chef.bat exec bundle exec kitchen verify
 
