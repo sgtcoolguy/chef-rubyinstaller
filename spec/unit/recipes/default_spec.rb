@@ -50,7 +50,7 @@ describe 'rubyinstaller::default' do
       end
 
       it 'downloads the latest CA certificate' do
-        expect(chef_run).to create_remote_file("C:/Ruby23-x64/lib/ruby/2.3.0/rubygems/ssl_certs/AddTrustExternalCARoot-2048")
+        expect(chef_run).to create_remote_file('C:/Ruby23-x64/lib/ruby/2.3.0/rubygems/ssl_certs/AddTrustExternalCARoot-2048')
       end
 
       it 'downloads the Ruby DevKit' do
